@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>一个简单的react项目</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        .addBtn{
+            width:70px;
+            height:40px;
+            line-height:40px;
+            background:#f3f5f6;
+            border:none;
+            border-radius:10px;
+            margin:20px 40px;
+        }
+        input{
+            outline: none;
+            border-width: 0 0 1px 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        .item,.edit-item{
+           display: flex;
+           justify-content: space-between;
+           margin:20px;
+        }
+        .item a ,.edit-item a{
+            margin:0 10px;
+        }
+        .item-content{
+        }
+    </style>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+// ListItem
+class List extends React.Component{
+    render () {
+        return (
+            <div>
+                <button className="addBtn">add</button>
+                <ul>
+                    <Item val="ceshisisisis" />
+                    <EditItem inputVal="12121"/>
+                </ul>
+            </div>
+        )
+    }
+}
+
+// Item
+class Item extends React.Component{
+    render () {
+        return (
+            <li className="item">
+                <div className="item-content">{this.props.val}</div>
+                <div>
+                    <a href="#" className="item-update">编辑</a>
+                    <a href="#" className="item-delete">删除</a>
+                </div>
+            </li>
+        )
+    }
+}
+// editItem
+class EditItem extends React.Component{
+    render () {
+        return (
+            <li className="edit-item">
+                <input type="text" className="edit-item-content" value={this.props.inputVal}/>
+                <div>
+                    <a href="#" className="edit-update">更新</a>
+                    <a href="#" className="edit-delete">删除</a>
+                </div>
+            </li>
+        )
+    }
+}
+ReactDOM.render(
+    <List/>,
+    document.getElementById('root')
+); 
+</script>
+</html>
